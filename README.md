@@ -12,7 +12,7 @@ The interaction between the atoms was very large, and combined with the effect o
 
 ------------------------
 
-About the code:
+About the code: roughly 3K lines of Mathematica code.
 
 First of all, the code in the form it can be viewed here on GitHub is very hard to read. It should be opened in Mathematica so that the symbols are not represented by Mathematica's strange built-in notation. 
 
