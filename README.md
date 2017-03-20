@@ -10,7 +10,7 @@ This looks like a very simple question. However, the ultracold atomic realizatio
 
 The interaction between the atoms was very large, and combined with the effect of the confining potential, made the wire superconducting, whereas the surrounding gas was in the normal phase, creating a so-called normal-superconducting-normal junction.
 
-
+------------------------
 
 About the code:
 
@@ -22,5 +22,6 @@ The code is structured as follows:
 - 'System parameters': here one can set all the physical parameters
 - 'Common definitions for both calculations': set up the transverse harmonic modes and their matrix elements in laboratory frame and in the center of mass frame
 - 'Definitions for the BCS calculation': These are the functions that are used to determine the free energy of the system. This has a rather complicated integral form (see the paper), please read the paper to follow through the definitions. To calculate the free energy, I had to write a Romberg integration routine qromb (see Numerical Recipies), which also uses a polynomial interpolation for vector, matrix and tensor values, called polint. qromb is much-much faster than the NIntegrate routine of Mathematica. The numerical minimization of the free energy is done in the routine Find\[CapitalDelta]00.
-
+- 'BCS calculation': The superconducting order parameter is calculated in this part of the code. (BCS stands for the Bardeen-Cooper-Schrieffer model of superconductivity.) The results are automatically saved and the plots of the confining potentials, the binding energy of the atoms and the superconducting order parameter are plotted and exported.
+- 'Definitions for the transport calculation': Now, that we have the superconducting profile accross the wire, we calculate the conductance and spin conductance values. To do that, we determine the probability of an atom being able to pass through the wire, the transition probabilities. We chop the wire into small intervals, and determine the transition probabilities between each of these. As the atom can be in several transverse modes, the transition probabilities form a matrix (transfer matrix). The transition probabilities of the entire channel can be optained by simply multiplying these matrices. However, the resulting matrix multiplication is numerically unstable, we use a usual trick of scattering matrices (see the paper) to avoid divergences.
 
