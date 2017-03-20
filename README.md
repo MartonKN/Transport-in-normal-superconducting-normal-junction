@@ -14,4 +14,13 @@ The interaction between the atoms was very large, and combined with the effect o
 
 About the code:
 
+First of all, the code in the form it can be viewed here on GitHub is very hard to read. It should be opened in Mathematica so that it becomes readable. Note also that I used Mathematica as a functional programming language in this project. I set up a many functions ('Modules') that were combined in each part of the calculation. The whole code ran within the same notebook.
+
+At the beginning of the simulation, one can set up the parameters of the system, see the comments in the code and the paper. The potentials are spatially dependent, therefore we determine the superconducting order parameter Delta at each point along the wire. Once we have the superconducting profile, we use an S-matrix calculation to determine the conductance and the spin conductance.
+
+The code is structured as follows:
+- 'System parameters': here one can set all the physical parameters
+- 'Common definitions for both calculations': set up the transverse harmonic modes and their matrix elements in laboratory frame and in the center of mass frame
+- 'Definitions for the BCS calculation': These are the functions that are used to determine the free energy of the system. This has a rather complicated integral form (see the paper), please read the paper to follow through the definitions. To calculate the free energy, I had to write a Romberg integration routine qromb (see Numerical Recipies), which also uses a polynomial interpolation for vector, matrix and tensor values, called polint. qromb is much-much faster than the NIntegrate routine of Mathematica. The numerical minimization of the free energy is done in the routine Find\[CapitalDelta]00.
+
 
